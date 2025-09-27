@@ -7,8 +7,4 @@ into Lizhi’s simulation framework. The workflow includes:
 - Mapping GENROU and SEXS models directly
 - Governor parameter fitting via Bode plot optimization
 
-## Usage
-Run the optimization with:
-```bash
-python bode_plot_fit.py
 
