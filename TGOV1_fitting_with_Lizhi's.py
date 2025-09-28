@@ -98,43 +98,43 @@ ph_target_zoom = ph_target[mask]
 ph_fitted_zoom = ph_fitted[mask]
 
 # -------------------------
+# -------------------------
 # Plot 1: Full frequency Bode plot
-plt.style.use('seaborn-v0_8-whitegrid')
-fig1, (ax1f, ax2f) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-fig1.suptitle('Bode Plot: Full Frequency Range', fontsize=16)
+fig1, (ax1f, ax2f) = plt.subplots(2, 1, figsize=(6.0, 4.0), sharex=True)
+fig1.suptitle('Bode Plot: Full Frequency Range', fontsize=16, y=0.98)  # bigger title, move closer
 
-ax1f.semilogx(w_full, mag_target, 'b-', label='Target (TGOV1)', linewidth=2)
-ax1f.semilogx(w_full, mag_fitted, 'r--', label='Fitted (Lizhi)', linewidth=2)
+ax1f.semilogx(w_full, mag_target, 'b-', label='Target (TGOV1)', linewidth=1)
+ax1f.semilogx(w_full, mag_fitted, 'r--', label='Fitted (Lizhi)', linewidth=1)
 ax1f.set_ylabel('Magnitude (dB)')
 ax1f.grid(True, which='both')
-ax1f.legend()
+ax1f.legend(fontsize=7)
 
-ax2f.semilogx(w_full, ph_target, 'b-', label='Target (TGOV1)', linewidth=2)
-ax2f.semilogx(w_full, ph_fitted, 'r--', label='Fitted (Lizhi)', linewidth=2)
+ax2f.semilogx(w_full, ph_target, 'b-', label='Target (TGOV1)', linewidth=1)
+ax2f.semilogx(w_full, ph_fitted, 'r--', label='Fitted (Lizhi)', linewidth=1)
 ax2f.set_ylabel('Phase (deg)')
 ax2f.set_xlabel('Frequency (rad/s)')
 ax2f.grid(True, which='both')
-ax2f.legend()
+ax2f.legend(fontsize=7)
 
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+plt.tight_layout(rect=[0, 0.02, 1, 0.95])  # reduce reserved space
 
 # -------------------------
 # Plot 2: Zoomed best-fit region
-fig2, (ax1z, ax2z) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-fig2.suptitle('Bode Plot: Best-Fit Frequency Region', fontsize=16)
+fig2, (ax1z, ax2z) = plt.subplots(2, 1, figsize=(6.0, 4.0), sharex=True)
+fig2.suptitle('Bode Plot: Best-Fit Frequency Region', fontsize=16, y=0.98)
 
-ax1z.semilogx(w_zoom, mag_target_zoom, 'b-', label='Target (TGOV1)', linewidth=2)
-ax1z.semilogx(w_zoom, mag_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=2)
+ax1z.semilogx(w_zoom, mag_target_zoom, 'b-', label='Target (TGOV1)', linewidth=1)
+ax1z.semilogx(w_zoom, mag_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=1)
 ax1z.set_ylabel('Magnitude (dB)')
 ax1z.grid(True, which='both')
-ax1z.legend()
+ax1z.legend(fontsize=7)
 
-ax2z.semilogx(w_zoom, ph_target_zoom, 'b-', label='Target (TGOV1)', linewidth=2)
-ax2z.semilogx(w_zoom, ph_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=2)
+ax2z.semilogx(w_zoom, ph_target_zoom, 'b-', label='Target (TGOV1)', linewidth=1)
+ax2z.semilogx(w_zoom, ph_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=1)
 ax2z.set_ylabel('Phase (deg)')
 ax2z.set_xlabel('Frequency (rad/s)')
 ax2z.grid(True, which='both')
-ax2z.legend()
+ax2z.legend(fontsize=7)
 
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+plt.tight_layout(rect=[0, 0.02, 1, 0.95])
 plt.show()
