@@ -121,41 +121,47 @@ ph_fitted_zoom = ph_fitted[mask_zoom]
 # -------------------------
 # Plot 1: Full frequency Bode plot
 plt.style.use('seaborn-v0_8-whitegrid')
-fig1, (ax1f, ax2f) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-fig1.suptitle('Bode Plot: Full Frequency Range', fontsize=16)
+fig1, (ax1f, ax2f) = plt.subplots(
+    2, 1, figsize=(6.0, 4.0), sharex=True, constrained_layout=True
+)
+fig1.suptitle('Bode Plot: Full Frequency Range', fontsize=12, y=0.98, fontname="Arial")
 
-ax1f.semilogx(w_full, mag_target, 'b-', label='Target (TGOV1)', linewidth=2)
-ax1f.semilogx(w_full, mag_fitted, 'r--', label='Fitted (Lizhi)', linewidth=2)
-ax1f.set_ylabel('Magnitude (dB)')
-ax1f.grid(True, which='both')
-ax1f.legend()
+ax1f.semilogx(w_full, mag_target, 'b-', label='Target (TGOV1)', linewidth=1)
+ax1f.semilogx(w_full, mag_fitted, 'r--', label='Fitted (Lizhi)', linewidth=1)
+ax1f.set_ylabel('Magnitude (dB)', fontsize=8, fontname="Arial")
+ax1f.tick_params(axis='both', which='major', labelsize=7)
+ax1f.grid(True, which='both', linewidth=0.5)
+ax1f.legend(fontsize=7, frameon=False)
 
-ax2f.semilogx(w_full, ph_target, 'b-', label='Target (TGOV1)', linewidth=2)
-ax2f.semilogx(w_full, ph_fitted, 'r--', label='Fitted (Lizhi)', linewidth=2)
-ax2f.set_ylabel('Phase (deg)')
-ax2f.set_xlabel('Frequency (rad/s)')
-ax2f.grid(True, which='both')
-ax2f.legend()
-
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+ax2f.semilogx(w_full, ph_target, 'b-', linewidth=1)
+ax2f.semilogx(w_full, ph_fitted, 'r--', linewidth=1)
+ax2f.set_ylabel('Phase (deg)', fontsize=8, fontname="Arial")
+ax2f.set_xlabel('Frequency (rad/s)', fontsize=8, fontname="Arial")
+ax2f.tick_params(axis='both', which='major', labelsize=7)
+ax2f.grid(True, which='both', linewidth=0.5)
 
 # -------------------------
 # Plot 2: Zoomed target region
-fig2, (ax1z, ax2z) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-fig2.suptitle(f'Bode Plot: Target Region {w_target_min:.2e} – {w_target_max:.2e} rad/s', fontsize=16)
+fig2, (ax1z, ax2z) = plt.subplots(
+    2, 1, figsize=(6.0, 4.0), sharex=True, constrained_layout=True
+)
+fig2.suptitle(
+    f'Bode Plot: Target Region {w_target_min:.2e} – {w_target_max:.2e} rad/s',
+    fontsize=12, y=0.98, fontname="Arial"
+)
 
-ax1z.semilogx(w_zoom, mag_target_zoom, 'b-', label='Target (TGOV1)', linewidth=2)
-ax1z.semilogx(w_zoom, mag_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=2)
-ax1z.set_ylabel('Magnitude (dB)')
-ax1z.grid(True, which='both')
-ax1z.legend()
+ax1z.semilogx(w_zoom, mag_target_zoom, 'b-', label='Target (TGOV1)', linewidth=1)
+ax1z.semilogx(w_zoom, mag_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=1)
+ax1z.set_ylabel('Magnitude (dB)', fontsize=8, fontname="Arial")
+ax1z.tick_params(axis='both', which='major', labelsize=7)
+ax1z.grid(True, which='both', linewidth=0.5)
+ax1z.legend(fontsize=7, frameon=False)
 
-ax2z.semilogx(w_zoom, ph_target_zoom, 'b-', label='Target (TGOV1)', linewidth=2)
-ax2z.semilogx(w_zoom, ph_fitted_zoom, 'r--', label='Fitted (Lizhi)', linewidth=2)
-ax2z.set_ylabel('Phase (deg)')
-ax2z.set_xlabel('Frequency (rad/s)')
-ax2z.grid(True, which='both')
-ax2z.legend()
+ax2z.semilogx(w_zoom, ph_target_zoom, 'b-', linewidth=1)
+ax2z.semilogx(w_zoom, ph_fitted_zoom, 'r--', linewidth=1)
+ax2z.set_ylabel('Phase (deg)', fontsize=8, fontname="Arial")
+ax2z.set_xlabel('Frequency (rad/s)', fontsize=8, fontname="Arial")
+ax2z.tick_params(axis='both', which='major', labelsize=7)
+ax2z.grid(True, which='both', linewidth=0.5)
 
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 plt.show()
